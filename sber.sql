@@ -1,12 +1,12 @@
--- ступенчатое построение запроса
+-- СЃС‚СѓРїРµРЅС‡Р°С‚РѕРµ РїРѕСЃС‚СЂРѕРµРЅРёРµ Р·Р°РїСЂРѕСЃР° 
  
--- 1. имена систем по кодам:
+-- 1. РёРјРµРЅР° СЃРёСЃС‚РµРј РїРѕ РєРѕРґР°Рј:
 select s.sys_name
 from dictionary d, system s
 where d.code in ('SYSTEM_OUT', 'SYSTEM_IN')
 and d.sysid = s.id
  
--- 2. добавляем количество сообщений по каждой системе:
+-- 2. РґРѕР±Р°РІР»СЏРµРј РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕРѕР±С‰РµРЅРёР№ РїРѕ РєР°Р¶РґРѕР№ СЃРёСЃС‚РµРјРµ:
 select s.sys_name, count(*) as mesqty
 from dictionary d, system s, messages m
 where d.code in ('SYSTEM_OUT', 'SYSTEM_IN')
@@ -15,7 +15,7 @@ and s.id = m.sysid
 group by s.sys_name
 order by s.sys_name
 
--- 3. если msg будет пустой. Правильный запрос будет такой:
+-- 3. РµСЃР»Рё msg Р±СѓРґРµС‚ РїСѓСЃС‚РѕР№. РџСЂР°РІРёР»СЊРЅС‹Р№ Р·Р°РїСЂРѕСЃ Р±СѓРґРµС‚ С‚Р°РєРѕР№:
 select s.sys_name, (select count(*) from message m where m.sysid = s.id) as msg_qty
 from Dictionary d, system s
 where d.code in ('SYSTEM_OUT', 'SYSTEM_IN')
