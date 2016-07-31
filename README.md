@@ -6,7 +6,7 @@ System {ID, Sys_Name} Value {1, 2} {Система1, Система2};
 Дана таблица Message, в которой содержатся сообщения, отправляемые системой
 Ключ: System.id = Message.sysId
 
-Message{Id, SysId, Message} Value{2, 3, 5, 17} {1, 1, 2, 3} {TestMsg1, TestMsg2, TestMsg457, SUM=451};
+Message {Id, SysId, Message} Value{2, 3, 5, 17} {1, 1, 2, 3} {TestMsg1, TestMsg2, TestMsg457, SUM=451};
 
 Дана таблица Dictoinary, в которой каждой системе соответствует код справочника
 Ключ: System.Id = Dictionary.SysId
